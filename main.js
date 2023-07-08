@@ -27,6 +27,7 @@ function initScroll() {
 
 function initCursorFollow() {
   const cursor = document.querySelector('#cursor');
+  const bgCursor = document.querySelector('.bg__cursor');
 
   let cursorX = 0;
   let cursorY = 0;
@@ -45,6 +46,9 @@ function initCursorFollow() {
 
     cursor.style.left = `${ballX}px`;
     cursor.style.top = `${ballY}px`;
+
+    bgCursor.style.left = `${ballX}px`;
+    bgCursor.style.top = `${ballY}px`;
 
     requestAnimationFrame(animate);
   }

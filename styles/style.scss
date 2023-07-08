@@ -26,9 +26,14 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   background-color: var(--black);
-  padding: 2rem;
   color: var(--white);
   font-size: 0.8rem;
+}
+
+.content__container {
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 img,
@@ -84,6 +89,44 @@ html.lenis {
     background: var(--white);
     z-index: 1000;
   }
+}
+
+// bg cursor
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+.bg__cursor {
+  height: 30rem;
+  width: 30rem;
+  background: radial-gradient(ellipse at top, #e548dd, transparent),
+    radial-gradient(ellipse at bottom, #64a6e9, transparent);
+
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  height: 50%;
+  translate: -50% -50%;
+  animation: rotate 20s infinite;
+  opacity: 0.2;
+}
+
+.bg__blur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  backdrop-filter: blur(12vmax);
 }
 
 // header
