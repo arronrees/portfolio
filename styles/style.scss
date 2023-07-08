@@ -44,6 +44,23 @@ img {
   object-position: center;
 }
 
+// scroller
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 // header
 .header {
   padding: 2rem;
@@ -51,6 +68,7 @@ img {
   align-items: flex-start;
   justify-content: space-between;
   color: var(--cream);
+  height: 110vh;
 
   .initials {
     font-weight: var(--font-xbold);
