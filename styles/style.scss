@@ -26,6 +26,9 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   background-color: var(--black);
+  padding: 2rem;
+  color: var(--white);
+  font-size: 0.8rem;
 }
 
 img,
@@ -85,7 +88,6 @@ html.lenis {
 
 // header
 .header {
-  padding: 2rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -103,5 +105,32 @@ html.lenis {
       flex-direction: column;
       gap: 0.5rem;
     }
+  }
+}
+
+// intro
+.intro {
+  margin-top: 10rem;
+
+  .name {
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .line {
+      background-color: var(--cream);
+      height: 1px;
+      width: 2rem;
+    }
+  }
+
+  .heading {
+    margin-top: 0.5rem;
+    font-family: var(--title-font);
+    font-weight: var(--font-black);
+    font-size: 12.5vw;
+    line-height: 1;
+    text-transform: uppercase;
   }
 }
