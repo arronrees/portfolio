@@ -1,0 +1,68 @@
+@import 'reset';
+
+:root {
+  --title-font: 'Montserrat', sans-serif;
+  --body-font: 'JetBrains Mono', monospace;
+
+  --black: #1a1a1a;
+  --white: #fff;
+  --cream: #f6eee3;
+
+  --font-light: 300;
+  --font-medium: 500;
+  --font-xbold: 800;
+  --font-black: 900;
+}
+
+// global styles
+span {
+  display: inline-block;
+}
+
+body {
+  font-family: var(--body-font);
+  font-weight: var(--font-light);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  background-color: var(--black);
+}
+
+img,
+figure {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+figure {
+  overflow: hidden;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+// header
+.header {
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: var(--cream);
+
+  .initials {
+    font-weight: var(--font-xbold);
+    font-size: 2rem;
+  }
+
+  .navbar {
+    .nav__menu {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}
