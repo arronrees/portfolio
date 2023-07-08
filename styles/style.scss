@@ -61,6 +61,28 @@ html.lenis {
   overflow: hidden;
 }
 
+// cursor
+#cursor {
+  display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  #cursor {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: 0.2s ease-in-out;
+    transition-property: background, width, height, border-color;
+    background: var(--white);
+    z-index: 1000;
+  }
+}
+
 // header
 .header {
   padding: 2rem;
@@ -68,7 +90,6 @@ html.lenis {
   align-items: flex-start;
   justify-content: space-between;
   color: var(--cream);
-  height: 110vh;
 
   .initials {
     font-weight: var(--font-xbold);

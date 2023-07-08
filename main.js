@@ -25,6 +25,41 @@ function initScroll() {
   requestAnimationFrame(raf);
 }
 
+function initCursorFollow() {
+  const cursor = document.querySelector('#cursor');
+
+  let cursorX = 0;
+  let cursorY = 0;
+
+  let ballX = 0;
+  let ballY = 0;
+
+  let speed = 0.1;
+
+  function animate() {
+    let distX = cursorX - ballX;
+    let distY = cursorY - ballY;
+
+    ballX = ballX + distX * speed;
+    ballY = ballY + distY * speed;
+
+    cursor.style.left = `${ballX}px`;
+    cursor.style.top = `${ballY}px`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  function cursorFollow({ pageX, pageY, target }) {
+    cursorX = pageX;
+    cursorY = pageY;
+  }
+
+  document.addEventListener('mousemove', cursorFollow);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScroll();
+  initCursorFollow();
 });
