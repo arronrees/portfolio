@@ -58,6 +58,7 @@ figure {
   height: 100%;
   pointer-events: none;
   min-height: inherit;
+  max-height: inherit;
 }
 
 figure {
@@ -250,6 +251,12 @@ html.lenis {
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  .intro {
+    margin-top: 12rem;
+  }
+}
+
 // about
 .about {
   display: grid;
@@ -304,6 +311,12 @@ html.lenis {
     margin-top: 6rem;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .about {
+    margin-top: 9rem;
   }
 }
 
@@ -393,7 +406,16 @@ html.lenis {
         figure {
           position: relative;
           transform-origin: left;
-          border: 2px solid var(--cream);
+
+          img {
+            object-position: top;
+            border: 2px solid var(--cream);
+            transition: transform 0.7s ease;
+
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
 
           .img__cover {
             position: absolute;
@@ -425,6 +447,7 @@ html.lenis {
         }
         &:nth-of-type(2) {
           grid-column: 5 / 11;
+          margin-top: auto;
         }
         &:nth-of-type(3) {
           grid-column: 1 / 6;
@@ -460,6 +483,8 @@ html.lenis {
 
 @media only screen and (min-width: 1200px) {
   .work {
+    margin-top: 9rem;
+
     .text {
       p {
         max-width: 365px;
@@ -554,6 +579,8 @@ html.lenis {
 
 @media only screen and (min-width: 1200px) {
   .footer {
+    margin-top: 9rem;
+
     .bottom {
       font-size: 13vw;
     }
