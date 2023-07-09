@@ -118,6 +118,11 @@ html.lenis {
       width: 3.5rem;
       height: 3.5rem;
     }
+
+    &.cursor--word {
+      width: 9rem;
+      height: 9rem;
+    }
   }
 }
 
@@ -131,6 +136,11 @@ html.lenis {
     &.cursor--img {
       width: 5rem;
       height: 5rem;
+    }
+
+    &.cursor--word {
+      width: 15rem;
+      height: 15rem;
     }
   }
 }

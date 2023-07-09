@@ -71,6 +71,12 @@ function initCursorFollow() {
     } else {
       cursor.classList.remove('cursor--img');
     }
+
+    if (target.classList.contains('word--intro')) {
+      cursor.classList.add('cursor--word');
+    } else {
+      cursor.classList.remove('cursor--word');
+    }
   }
 
   document.addEventListener('mousemove', cursorFollow);
