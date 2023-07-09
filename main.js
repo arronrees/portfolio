@@ -58,6 +58,12 @@ function initCursorFollow() {
   function cursorFollow({ pageX, pageY, target }) {
     cursorX = pageX;
     cursorY = pageY;
+
+    if (target.classList.contains('nav__link')) {
+      cursor.classList.add('cursor--link');
+    } else {
+      cursor.classList.remove('cursor--link');
+    }
   }
 
   document.addEventListener('mousemove', cursorFollow);
