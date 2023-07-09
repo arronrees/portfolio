@@ -21,6 +21,23 @@ function initScroll() {
   }
 
   requestAnimationFrame(raf);
+
+  function initNavigationLinks() {
+    const links = document.querySelectorAll('.navbar .nav__link');
+
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const { href } = link.dataset;
+        const target = document.querySelector(href);
+
+        lenis.scrollTo(target);
+      });
+    });
+  }
+
+  initNavigationLinks();
 }
 
 function initCursorFollow() {
