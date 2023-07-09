@@ -375,3 +375,96 @@ html.lenis {
     }
   }
 }
+
+// footer
+.footer {
+  margin-top: 4rem;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--cream);
+
+    p {
+      font-family: var(--title-font);
+      font-weight: var(--font-black);
+      font-size: 8vw;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .btn {
+      position: relative;
+      display: block;
+      overflow: hidden;
+
+      span {
+        pointer-events: none;
+        position: relative;
+
+        &.hover__text {
+          transform: translateY(100%);
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+
+      &:hover {
+        span {
+          transform: translateY(-100%);
+          transition: transform 0.3s ease;
+
+          &.hover__text {
+            transform: translateY(0%);
+          }
+        }
+      }
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--cream);
+    margin: 1rem 0;
+  }
+
+  .bottom {
+    font-family: var(--title-font);
+    font-weight: var(--font-black);
+    font-size: 10vw;
+    text-transform: uppercase;
+    line-height: 1;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 450px) {
+  .footer {
+    .bottom {
+      font-size: 11.5vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .footer {
+    margin-top: 6rem;
+
+    .bottom {
+      font-size: 12.5vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .footer {
+    .bottom {
+      font-size: 13vw;
+    }
+  }
+}
