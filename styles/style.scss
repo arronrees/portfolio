@@ -278,20 +278,23 @@ html.lenis {
     position: relative;
     min-height: 20rem;
     height: 45vh;
+    overflow: hidden;
 
     figure {
       position: relative;
       z-index: 10;
-    }
+      transform-origin: left;
 
-    .img__colour {
-      position: absolute;
-      width: 100%;
-      height: 70%;
-      background-color: var(--cream);
-      bottom: -1rem;
-      right: -1rem;
-      pointer-events: none;
+      .img__cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: var(--cream);
+        transform-origin: right;
+        z-index: 15;
+      }
     }
   }
 }
@@ -307,7 +310,7 @@ html.lenis {
 // work
 .work {
   max-width: 1200px;
-  margin: 5rem auto 0 auto;
+  margin: 4rem auto 0 auto;
 
   .text {
     padding: 0 2rem;
@@ -420,7 +423,7 @@ html.lenis {
 
 @media only screen and (min-width: 650px) {
   .work {
-    margin-top: 7rem;
+    margin-top: 6rem;
 
     .text {
       p {
