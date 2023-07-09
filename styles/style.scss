@@ -384,12 +384,28 @@ html.lenis {
     gap: 1rem;
 
     .work__grid__item {
-      border: 2px solid var(--cream);
       height: 14rem;
 
       .img {
         height: 100%;
         width: 100%;
+
+        figure {
+          position: relative;
+          transform-origin: left;
+          border: 2px solid var(--cream);
+
+          .img__cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--cream);
+            transform-origin: right;
+            z-index: 10;
+          }
+        }
       }
     }
   }

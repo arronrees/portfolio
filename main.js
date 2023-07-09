@@ -103,8 +103,48 @@ function aboutReveal() {
     );
 }
 
+function workReveal() {
+  const p = document.querySelector('.work .text p');
+  const a = document.querySelector('.work .text a');
+  const imgs = document.querySelectorAll('.work .work__grid__item');
+
+  const textTl = gsap.timeline({
+    defaults: { duration: 0.6, ease: 'power2.inOut' },
+    scrollTrigger: {
+      trigger: '.work',
+      start: 'top 40%',
+    },
+  });
+
+  textTl.fromTo(
+    [p, a],
+    { y: 25, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, stagger: 0.15 }
+  );
+
+  imgs.forEach((image) => {
+    const fig = image.querySelector('.img figure');
+    const cover = image.querySelector('.img figure .img__cover');
+    const img = image.querySelector('.img figure img');
+
+    const imgTl = gsap.timeline({
+      defaults: { duration: 0.8, ease: 'power2.inOut' },
+      scrollTrigger: {
+        trigger: image,
+        start: 'top 75%',
+      },
+    });
+
+    imgTl
+      .fromTo(fig, { scaleX: 0 }, { scaleX: 1 })
+      .fromTo(cover, { scaleX: 1 }, { scaleX: 0 })
+      .fromTo(img, { scale: 1.125 }, { scale: 1 }, '-=0.7');
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScroll();
   initCursorFollow();
   aboutReveal();
+  workReveal();
 });
