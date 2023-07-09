@@ -46,6 +46,12 @@ body {
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
+
 img,
 figure {
   width: 100%;
@@ -105,6 +111,25 @@ html.lenis {
       background: transparent;
       width: 1.5rem;
       height: 1.5rem;
+    }
+
+    &.cursor--img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #cursor {
+    &.cursor--link {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &.cursor--img {
+      width: 5rem;
+      height: 5rem;
     }
   }
 }
@@ -266,6 +291,7 @@ html.lenis {
       background-color: var(--cream);
       bottom: -1rem;
       right: -1rem;
+      pointer-events: none;
     }
   }
 }
@@ -309,6 +335,7 @@ html.lenis {
       position: relative;
       max-width: max-content;
       padding-bottom: 0.25rem;
+      font-weight: var(--font-medium);
 
       &::after {
         content: '';
@@ -318,6 +345,31 @@ html.lenis {
         width: 100%;
         height: 1px;
         background-color: var(--cream);
+      }
+
+      overflow: hidden;
+
+      span {
+        pointer-events: none;
+        position: relative;
+
+        &.hover__text {
+          transform: translateY(100%);
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+
+      &:hover {
+        span {
+          transform: translateY(-100%);
+          transition: transform 0.3s ease;
+
+          &.hover__text {
+            transform: translateY(0%);
+          }
+        }
       }
     }
   }
@@ -370,8 +422,29 @@ html.lenis {
   .work {
     margin-top: 7rem;
 
+    .text {
+      p {
+        margin-top: 2rem;
+      }
+
+      p,
+      .btn {
+        margin-left: 2rem;
+      }
+    }
+
     .work__grid {
       margin-top: 4rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .work {
+    .text {
+      p {
+        max-width: 365px;
+      }
     }
   }
 }
@@ -392,7 +465,6 @@ html.lenis {
       font-family: var(--title-font);
       font-weight: var(--font-black);
       font-size: 8vw;
-      text-transform: uppercase;
       line-height: 1;
     }
 

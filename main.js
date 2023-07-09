@@ -59,10 +59,21 @@ function initCursorFollow() {
     cursorX = pageX;
     cursorY = pageY;
 
-    if (target.classList.contains('nav__link')) {
+    console.log(target);
+
+    if (
+      target.classList.contains('nav__link') ||
+      target.classList.contains('btn')
+    ) {
       cursor.classList.add('cursor--link');
     } else {
       cursor.classList.remove('cursor--link');
+    }
+
+    if (target.classList.contains('img')) {
+      cursor.classList.add('cursor--img');
+    } else {
+      cursor.classList.remove('cursor--img');
     }
   }
 
