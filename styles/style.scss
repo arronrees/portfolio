@@ -302,6 +302,7 @@ html.lenis {
       position: relative;
       z-index: 10;
       transform-origin: left;
+      border: 2px solid var(--cream);
 
       .img__cover {
         position: absolute;
