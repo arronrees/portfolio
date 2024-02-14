@@ -1,4 +1,5 @@
 // css
+import './styles/reset.scss';
 import './styles/style.scss';
 
 // js
@@ -7,6 +8,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const mm = gsap.matchMedia();
 
 function initScroll() {
   const lenis = new Lenis({ smoothWheel: true, lerp: 0.05 });
@@ -158,16 +161,64 @@ function workReveal() {
       },
     });
 
-    imgTl
-      .fromTo(fig, { scaleX: 0 }, { scaleX: 1 })
-      .fromTo(cover, { scaleX: 1 }, { scaleX: 0 })
-      .fromTo(img, { scale: 1.125 }, { scale: 1 }, '-=0.7');
+    mm.add('(max-width: 1024px)', () => {
+      imgTl
+        .fromTo(fig, { scaleX: 0 }, { scaleX: 1 })
+        .fromTo(cover, { scaleX: 1 }, { scaleX: 0 })
+        .fromTo(img, { scale: 1.125 }, { scale: 1 }, '-=0.7');
+    });
+  });
+
+  const grid = document.querySelector('.work__grid');
+  const padding = 2 * 16; // 6rem padding, 1rem for scrollbar, in px
+  const gridWidth = grid.offsetWidth;
+  const windowWidth = window.innerWidth;
+
+  mm.add('(min-width: 1024px)', () => {
+    gsap.to(grid, {
+      x: () => -(gridWidth - (windowWidth + padding)),
+      scrollTrigger: {
+        trigger: grid,
+        start: 'top top',
+        end: `+=${windowWidth}px`,
+        pin: true,
+        scrub: true,
+      },
+      ease: 'none',
+    });
+  });
+}
+
+function changeBgColourToLight() {
+  document.documentElement.style.setProperty('--black', '#f6eee3');
+  document.documentElement.style.setProperty('--beige', '#1a1a1a');
+  document.documentElement.style.setProperty('--white', '#1a1a1a');
+}
+function changeBgColourToDark() {
+  document.documentElement.style.setProperty('--black', '#1a1a1a');
+  document.documentElement.style.setProperty('--beige', '#f6eee3');
+  document.documentElement.style.setProperty('--white', '#fff');
+}
+
+function changeColourOnScroll() {
+  const work = document.querySelector('.work');
+
+  ScrollTrigger.create({
+    trigger: work,
+    start: 'top top',
+    onEnter: () => {
+      changeBgColourToLight();
+    },
+    onLeaveBack: () => {
+      changeBgColourToDark();
+    },
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initScroll();
-  initCursorFollow();
+  // initCursorFollow();
   aboutReveal();
   workReveal();
+  changeColourOnScroll();
 });

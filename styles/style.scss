@@ -1,17 +1,67 @@
 @import 'reset';
 
 :root {
-  --title-font: 'Montserrat', sans-serif;
+  --title-font: 'Space Grotesk', sans-serif;
   --body-font: 'JetBrains Mono', monospace;
 
   --black: #1a1a1a;
   --white: #fff;
-  --cream: #f6eee3;
+  --beige: #f6eee3;
 
+  --font-thin: 100;
+  --font-xlight: 200;
   --font-light: 300;
+  --font-regular: 400;
   --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
   --font-xbold: 800;
   --font-black: 900;
+
+  // font sizes
+  --vw-font-sm: 0.8rem;
+  --vw-font-reg: 1rem;
+  --vw-font-md: 1.25rem;
+  --vw-font-lg: 2rem;
+  --vw-font-xl: 3rem;
+  --vw-font-screen: clamp(2.5rem, 15vw, 10.5rem);
+
+  // transitions
+  --fast-speed: all 0.2s ease;
+  --mid-speed: all 0.65s ease;
+  --slow-speed: all 0.725s ease;
+}
+
+@media only screen and (min-width: 600px) {
+  :root {
+    --vw-font-sm: 1rem;
+    --vw-font-reg: 1.1rem;
+    --vw-font-md: 1.5rem;
+    --vw-font-lg: 2.5rem;
+    --vw-font-xl: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  :root {
+    --vw-font-sm: 1.05rem;
+    --vw-font-reg: 1.3rem;
+    --vw-font-md: 2rem;
+    --vw-font-lg: 3.25rem;
+    --vw-font-xl: 5.5rem;
+    --vw-font-screen: clamp(8rem, 12.5vw, 12rem);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  :root {
+    --vw-font-sm: clamp(1.05rem, 1.05rem, 1.15rem);
+    --vw-font-reg: clamp(1.3rem, 1.175vw, 2.5rem);
+    --vw-font-md: clamp(2rem, 1.75vw, 4rem);
+    --vw-font-lg: clamp(3.25rem, 2.8vw, 6rem);
+    --vw-font-xl: clamp(5.5rem, 6vw, 11rem);
+    --vw-font-screen: clamp(10rem, 12vw, 14rem);
+  }
 }
 
 // global styles
@@ -26,8 +76,11 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   background-color: var(--black);
-  color: var(--white);
-  font-size: 0.8rem;
+  color: var(--beige);
+  transition-property: color, background-color;
+  transition-duration: 0.7s;
+  transition-timing-function: ease;
+  font-size: var(--vw-font-sm);
 }
 
 .content__container {
@@ -37,18 +90,8 @@ body {
 }
 
 @media only screen and (min-width: 800px) {
-  body {
-    font-size: 1rem;
-  }
-
   .content__container {
     padding: 3rem;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  body {
-    font-size: 1.25rem;
   }
 }
 
@@ -188,11 +231,10 @@ html.lenis {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  color: var(--cream);
 
   .initials {
-    font-weight: var(--font-xbold);
-    font-size: 2rem;
+    font-weight: var(--font-bold);
+    font-size: var(--vw-font-md);
   }
 
   .navbar {
@@ -238,33 +280,110 @@ html.lenis {
 // intro
 .intro {
   margin-top: 10rem;
+  margin-bottom: 8rem;
+  text-align: center;
 
-  .name {
-    color: var(--cream);
+  .name,
+  .email {
+    font-weight: var(--font-xlight);
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     gap: 1rem;
+    font-size: var(--vw-font-reg);
 
     .line {
-      background-color: var(--cream);
-      height: 1px;
-      width: 2rem;
+      background-color: var(--beige);
+      transition: var(--colour-transition);
+      height: 0.5px;
+      width: 3rem;
+      order: 1;
     }
+  }
+
+  .name {
+    margin-bottom: 1rem;
+  }
+
+  .email {
+    margin-top: 1rem;
   }
 
   .heading {
     margin-top: 0.5rem;
     font-family: var(--title-font);
-    font-weight: var(--font-black);
-    font-size: 12.5vw;
-    line-height: 1;
-    text-transform: uppercase;
+    font-weight: var(--font-bold);
+    font-size: var(--vw-font-screen);
+    line-height: 1.1;
+
+    .word {
+      display: block;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .intro {
+    position: relative;
+
+    .name,
+    .email {
+      position: absolute;
+      top: 5rem;
+      margin: 0;
+      flex-direction: row;
+      gap: 2rem;
+
+      .line {
+        width: 0.5px;
+        height: 3rem;
+        order: 0;
+      }
+    }
+
+    .email {
+      left: 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .name {
+      right: 0;
+      writing-mode: vertical-lr;
+    }
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .intro {
-    margin-top: 12rem;
+    margin-top: 10rem;
+
+    .heading {
+      line-height: 1;
+    }
+
+    .name {
+      right: 5%;
+    }
+
+    .email {
+      left: 5%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1919px) {
+  .intro {
+    margin-bottom: 16rem;
+
+    .name {
+      right: 10%;
+    }
+
+    .email {
+      left: 10%;
+    }
   }
 }
 
@@ -273,22 +392,21 @@ html.lenis {
   display: grid;
   gap: 2rem;
   max-width: 900px;
-  margin: 4rem auto 0 auto;
+  margin: 0 auto;
+  margin-bottom: 8rem;
 
   .text {
-    color: var(--cream);
     padding: 0 2rem;
 
     h2 {
-      font-size: 2.5rem;
-      font-family: var(--title-font);
+      font-size: var(--vw-font-lg);
       font-weight: var(--font-black);
       margin-bottom: 0.5rem;
-      color: var(--white);
     }
 
     p {
       max-width: 360px;
+      font-size: var(--vw-font-reg);
     }
   }
 
@@ -302,7 +420,6 @@ html.lenis {
       position: relative;
       z-index: 10;
       transform-origin: left;
-      border: 2px solid var(--cream);
 
       .img__cover {
         position: absolute;
@@ -310,7 +427,7 @@ html.lenis {
         height: 100%;
         top: 0;
         left: 0;
-        background-color: var(--cream);
+        background-color: var(--beige);
         transform-origin: right;
         z-index: 15;
       }
@@ -320,7 +437,6 @@ html.lenis {
 
 @media only screen and (min-width: 650px) {
   .about {
-    margin-top: 6rem;
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
@@ -328,33 +444,53 @@ html.lenis {
 
 @media only screen and (min-width: 1200px) {
   .about {
-    margin-top: 9rem;
+    max-width: 1440px;
+    gap: 6rem;
+    grid-template-columns: 1fr 1.5fr;
+    margin-bottom: 10rem;
+
+    .text {
+      max-width: 700px;
+      margin-left: auto;
+      padding: 0;
+    }
+
+    .img {
+      height: 80vh;
+    }
+  }
+}
+
+@media only screen and (min-width: 1919px) {
+  .about {
+    margin-bottom: 16rem;
   }
 }
 
 // work
 .work {
   max-width: 1200px;
-  margin: 4rem auto 0 auto;
+  margin: 0 auto;
+  margin-bottom: 8rem;
 
   .text {
     padding: 0 2rem;
-    color: var(--cream);
+    transition: var(--colour-transition);
 
     h3 {
       font-family: var(--title-font);
       font-weight: var(--font-black);
-      font-size: 10vw;
-      text-transform: uppercase;
+      font-size: var(--vw-font-screen);
       line-height: 1;
       display: flex;
       flex-direction: column;
-      color: var(--white);
+      transition: var(--colour-transition);
     }
 
     p {
       margin-top: 1rem;
       max-width: 275px;
+      font-size: var(--vw-font-reg);
     }
 
     .btn {
@@ -372,7 +508,8 @@ html.lenis {
         left: 0;
         width: 100%;
         height: 1px;
-        background-color: var(--cream);
+        background-color: var(--beige);
+        transition: var(--colour-transition);
       }
 
       overflow: hidden;
@@ -421,12 +558,6 @@ html.lenis {
 
           img {
             object-position: top;
-            border: 2px solid var(--cream);
-            transition: transform 0.7s ease;
-
-            &:hover {
-              transform: scale(1.2);
-            }
           }
 
           .img__cover {
@@ -435,7 +566,7 @@ html.lenis {
             height: 100%;
             top: 0;
             left: 0;
-            background-color: var(--cream);
+            background-color: var(--beige);
             transform-origin: right;
             z-index: 10;
           }
@@ -474,11 +605,10 @@ html.lenis {
 
 @media only screen and (min-width: 650px) {
   .work {
-    margin-top: 6rem;
-
     .text {
       p {
         margin-top: 2rem;
+        max-width: 350px;
       }
 
       p,
@@ -493,34 +623,75 @@ html.lenis {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1024px) {
   .work {
-    margin-top: 9rem;
+    margin-bottom: 4rem;
 
     .text {
       p {
-        max-width: 365px;
+        max-width: 400px;
+      }
+    }
+
+    .work__grid {
+      height: 100vh;
+      display: flex;
+      gap: 4rem;
+      max-width: unset;
+      width: calc(400vw - 7rem);
+      padding: 4rem 0;
+
+      .work__grid__item {
+        height: 100%;
+        width: calc(100vw - 7rem);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .img {
+          width: 92.5%;
+        }
+
+        figure {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .img__cover {
+            display: none;
+          }
+        }
       }
     }
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  .work {
+    margin-bottom: 6rem;
+  }
+}
+
+@media only screen and (min-width: 1919px) {
+  .work {
+    margin-bottom: 12rem;
+  }
+}
+
 // footer
 .footer {
-  margin-top: 4rem;
-
   .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
-    color: var(--cream);
 
     p {
       font-family: var(--title-font);
       font-weight: var(--font-black);
-      font-size: 8vw;
+      font-size: var(--vw-font-screen);
       line-height: 1;
     }
 
@@ -557,44 +728,25 @@ html.lenis {
   .line {
     width: 100%;
     height: 1px;
-    background-color: var(--cream);
+    background-color: var(--beige);
+    transition: var(--colour-transition);
     margin: 1rem 0;
   }
 
   .bottom {
     font-family: var(--title-font);
     font-weight: var(--font-black);
-    font-size: 10vw;
+    font-size: var(--vw-font-screen);
     text-transform: uppercase;
     line-height: 1;
     text-align: center;
   }
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 1024px) {
   .footer {
     .bottom {
-      font-size: 11.5vw;
-    }
-  }
-}
-
-@media only screen and (min-width: 650px) {
-  .footer {
-    margin-top: 6rem;
-
-    .bottom {
-      font-size: 12.5vw;
-    }
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .footer {
-    margin-top: 9rem;
-
-    .bottom {
-      font-size: 13vw;
+      font-size: 15vw;
     }
   }
 }
