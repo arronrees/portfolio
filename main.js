@@ -107,10 +107,7 @@ function aboutReveal() {
   const cover = document.querySelector('.about .img figure .img__cover');
   const img = document.querySelector('.about .img figure img');
 
-  const h = document.querySelector('.about .text h2');
-  const p = document.querySelector('.about .text p');
-
-  const tl = gsap.timeline({
+  const imgTl = gsap.timeline({
     defaults: { duration: 0.8, ease: 'power2.inOut' },
     scrollTrigger: {
       trigger: fig,
@@ -118,15 +115,27 @@ function aboutReveal() {
     },
   });
 
-  tl.fromTo(fig, { scaleX: 0 }, { scaleX: 1 })
+  imgTl
+    .fromTo(fig, { scaleX: 0 }, { scaleX: 1 })
     .fromTo(cover, { scaleX: 1 }, { scaleX: 0 })
-    .fromTo(img, { scale: 1.125 }, { scale: 1 }, '-=0.75')
-    .fromTo(
-      [h, p],
-      { y: 25, autoAlpha: 0 },
-      { y: 0, autoAlpha: 1, stagger: 0.15 },
-      '-=1.1'
-    );
+    .fromTo(img, { scale: 1.125 }, { scale: 1 }, '-=0.75');
+
+  const h = document.querySelector('.about .text h2');
+  const p = document.querySelector('.about .text p');
+
+  const textTl = gsap.timeline({
+    defaults: { duration: 0.8, ease: 'power2.inOut' },
+    scrollTrigger: {
+      trigger: h,
+      start: 'top 90%',
+    },
+  });
+
+  textTl.fromTo(
+    [h, p],
+    { y: 25, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, stagger: 0.15 }
+  );
 }
 
 function workReveal() {
@@ -137,8 +146,8 @@ function workReveal() {
   const textTl = gsap.timeline({
     defaults: { duration: 0.6, ease: 'power2.inOut' },
     scrollTrigger: {
-      trigger: '.work',
-      start: 'top 40%',
+      trigger: p,
+      start: 'top 80%',
     },
   });
 
