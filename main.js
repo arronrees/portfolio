@@ -224,10 +224,40 @@ function changeColourOnScroll() {
   });
 }
 
+function moveWorkPlusOnHover() {
+  const images = document.querySelectorAll('.work__grid__item');
+
+  document.addEventListener('mousemove', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    const distanceX = x - centerX;
+    const distanceY = y - centerY;
+
+    const distanceXPercent = Math.round((distanceX / centerX) * 100);
+    const distanceYPercent = Math.round((distanceY / centerY) * 100);
+
+    images.forEach((img) => {
+      const plus = img.querySelector('.plus');
+
+      plus.style.transform = `translate(${distanceXPercent * 0.15}px, ${
+        distanceYPercent * 0.15
+      }px)`;
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScroll();
   // initCursorFollow();
   aboutReveal();
   workReveal();
   changeColourOnScroll();
+  moveWorkPlusOnHover();
 });

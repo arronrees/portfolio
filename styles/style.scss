@@ -550,6 +550,10 @@ html.lenis {
         height: 100%;
         width: 100%;
 
+        .plus__wrap {
+          display: none;
+        }
+
         figure {
           position: relative;
           transform-origin: left;
@@ -647,8 +651,60 @@ html.lenis {
         align-items: center;
         justify-content: center;
 
+        &:hover {
+          .img {
+            width: 97.5%;
+
+            .plus__wrap {
+              opacity: 1;
+            }
+          }
+
+          figure {
+            .img__cover {
+              opacity: 0.4;
+            }
+          }
+        }
+
         .img {
-          width: 92.5%;
+          width: 90%;
+          transition: var(--mid-speed);
+          position: relative;
+
+          .plus__wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: var(--mid-speed);
+            z-index: 15;
+            opacity: 0;
+          }
+
+          .plus {
+            display: block;
+            border-radius: 50%;
+            width: 7rem;
+            height: 7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f6eee3;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+
+            svg {
+              width: 50%;
+              height: 50%;
+
+              path {
+                fill: #1a1a1a;
+              }
+            }
+          }
         }
 
         figure {
@@ -657,7 +713,9 @@ html.lenis {
           justify-content: center;
 
           .img__cover {
-            display: none;
+            color: var(--black);
+            opacity: 0;
+            transition: var(--mid-speed);
           }
         }
       }
